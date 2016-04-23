@@ -7,10 +7,34 @@ package ejemploobjetos.objetos;
 
 /**
  *
- * @author APRENDIZ
+ * @author https://github.com/jatorresdev
  */
 public class Eventos {
-    // Evento
-    // Lugar
-    // Fecha
+    private String evento;
+    private String lugar;
+    private String fecha;
+
+    public void setEvento(String evento) {
+        this.evento = evento;
+    }
+
+    public String getEvento() {
+        return this.evento;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public String getLugar() {
+        return this.lugar;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getFecha() {
+        return this.fecha;
+    }
 }
