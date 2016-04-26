@@ -5,6 +5,8 @@
  */
 package ejemploobjetos.objetos;
 
+import java.util.Date;
+
 /**
  *
  * @author https://github.com/jatorresdev
@@ -12,7 +14,7 @@ package ejemploobjetos.objetos;
 public class Eventos {
     private String evento;
     private String lugar;
-    private String fecha;
+    private Date fecha;
 
     public void setEvento(String evento) {
         this.evento = evento;
@@ -30,11 +32,11 @@ public class Eventos {
         return this.lugar;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return this.fecha;
     }
 }

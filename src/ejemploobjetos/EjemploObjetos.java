@@ -8,6 +8,9 @@ package ejemploobjetos;
 import java.util.Scanner;
 import ejemploobjetos.objetos.Contactos;
 import ejemploobjetos.objetos.Eventos;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -33,6 +36,8 @@ public class EjemploObjetos {
         String lugar;
         String fecha;
 
+        int cantidad = 1;
+
         do {
             /**
              * Imprimo en pantalla información al usuario
@@ -55,55 +60,92 @@ public class EjemploObjetos {
                     break;
 
                 case 1:
-                    Contactos contacto = new Contactos();
-
-                    System.out.println("Para registrar un contacto ingrese los siguientes datos ");
-                    System.out.print("Nombre: ");
-                    nombre = cadena.nextLine();
-                    contacto.setNombre(nombre);
-
-                    System.out.print("Telefono: ");
-                    telefono = cadena.nextInt();
+                    ArrayList<Contactos> listaContactos = new ArrayList<>();
+                    System.out.println("Cuantos contactos desea registrar?");
+                    cantidad = cadena.nextInt();
                     cadena.nextLine();
-                    contacto.setTelefono(telefono);
 
-                    System.out.print("Correo: ");
-                    correo = cadena.nextLine();
-                    contacto.setCorreo(correo);
+                    for (int i = 0; i < cantidad; i++) {
+                        Contactos contacto = new Contactos();
 
-                    System.out.print("Edad: ");
-                    edad = cadena.nextInt();
-                    cadena.nextLine();
-                    contacto.setEdad(edad);
+                        System.out.println("Para registrar un contacto ingrese los siguientes datos ");
+                        System.out.print("Nombre: ");
+                        nombre = cadena.nextLine();
+                        contacto.setNombre(nombre);
 
-                    System.out.println("\nEl contacto ha sido creado exitosamente");
-                    System.out.println("Nombre: " + contacto.getNombre());
-                    System.out.println("Telefono: " + contacto.getTelefono());
-                    System.out.println("Correo: " + contacto.getCorreo());
-                    System.out.println("Edad: " + contacto.getEdad());
+                        System.out.print("Telefono: ");
+                        telefono = cadena.nextInt();
+                        cadena.nextLine();
+                        contacto.setTelefono(telefono);
+
+                        System.out.print("Correo: ");
+                        correo = cadena.nextLine();
+                        contacto.setCorreo(correo);
+
+                        System.out.print("Edad: ");
+                        edad = cadena.nextInt();
+                        cadena.nextLine();
+                        contacto.setEdad(edad);
+
+                        listaContactos.add(contacto);
+                        System.out.println("El contacto ha sido creado exitosamente\n");
+                    }
+
+                    System.out.println("A continuación se listan sus contactos");
+                    for (int i = 0; i < listaContactos.size(); i++) {
+                        Contactos contactoSave = listaContactos.get(i);
+
+                        System.out.println("Nombre: " + contactoSave.getNombre());
+                        System.out.println("Telefono: " + contactoSave.getTelefono());
+                        System.out.println("Correo: " + contactoSave.getCorreo());
+                        System.out.println("Edad: " + contactoSave.getEdad());
+                    }
 
                     break;
 
                 case 2:
-                    Eventos evento = new Eventos();
+                    ArrayList<Eventos> listaEventos = new ArrayList<>();
+                    System.out.println("Cuantos eventos desea registrar?");
+                    cantidad = cadena.nextInt();
+                    cadena.nextLine();
 
-                    System.out.println("Para registrar un evento ingrese los siguientes datos ");
-                    System.out.print("Evento: ");
-                    eventoNombre = cadena.nextLine();
-                    evento.setEvento(eventoNombre);
+                    SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
 
-                    System.out.print("Lugar: ");
-                    lugar = cadena.nextLine();
-                    evento.setLugar(lugar);
+                    for (int i = 0; i < cantidad; i++) {
+                        Eventos evento = new Eventos();
 
-                    System.out.print("Fecha: ");
-                    fecha = cadena.nextLine();
-                    evento.setFecha(fecha);
+                        System.out.println("Para registrar un evento ingrese los siguientes datos ");
+                        System.out.print("Evento: ");
+                        eventoNombre = cadena.nextLine();
+                        evento.setEvento(eventoNombre);
 
-                    System.out.println("\nEl evento ha sido creado exitosamente");
-                    System.out.println("Evento: " + evento.getEvento());
-                    System.out.println("Lugar: " + evento.getLugar());
-                    System.out.println("Fecha: " + evento.getFecha());
+                        System.out.print("Lugar: ");
+                        lugar = cadena.nextLine();
+                        evento.setLugar(lugar);
+
+                        System.out.print("Fecha: ");
+                        fecha = cadena.nextLine();
+
+                        try {
+                            Date fechaEvento = formatoFecha.parse(fecha);
+                            evento.setFecha(fechaEvento);
+
+                        } catch (Exception e) {
+                            System.out.println("Ingrese una fecha valida");
+                        }
+
+                        listaEventos.add(evento);
+                        System.out.println("El evento ha sido creado exitosamente\n");
+                    }
+
+                    System.out.println("A continuación se listan sus eventos");
+                    for (int i = 0; i < listaEventos.size(); i++) {
+                        Eventos eventoSave = listaEventos.get(i);
+                        
+                        System.out.println("Evento: " + eventoSave.getEvento());
+                        System.out.println("Lugar: " + eventoSave.getLugar());
+                        System.out.println("Fecha: " + eventoSave.getFecha());
+                    }
 
                     break;
 
@@ -112,8 +154,8 @@ public class EjemploObjetos {
 
                     break;
             }
-        } while(opcionMenu != 0);
-        
+        } while (opcionMenu != 0);
+
     }
-    
+
 }
