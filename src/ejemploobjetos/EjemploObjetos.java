@@ -44,8 +44,8 @@ public class EjemploObjetos {
              */
             System.out.println("\n\t\t\t\tBienvenido a Ejemplo Objetos\n");
             System.out.println("Seleccione una de las siguientes opciones: \n");
-            System.out.println("1. Registrar un Contacto");
-            System.out.println("2. Registrar un Evento");
+            System.out.println("1. Registrar Contactos");
+            System.out.println("2. Registrar Eventos");
             System.out.println("0. Salir\n");
             System.out.print("Opción: ......... ");
 
